@@ -17,13 +17,13 @@ var express = require('express'),
       var transporter = nodeMailer.createTransport({
          service: 'gmail',
          auth: {
-                user: 'nodejs21@gmail.com',
+                user: req.body.user,
                 pass: req.body.pass
             }
         });
       let mailOptions = {
-          from: '"Safi Ullah" <ndoejs21@gmail.com>', // sender address
-          to: "nodejs21@gmail.com", // list of receivers
+          from: req.body.from, // sender address
+          to: req.body.to, // list of receivers
           subject: req.body.subject, // Subject line
           text: req.body.body, // plain text body
           html: '<b>NodeJS Email Tutorial</b>' // html body
