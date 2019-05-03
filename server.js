@@ -14,16 +14,13 @@ var express = require('express'),
     });
     app.post('/send-email', async function (req, res) {
       console.log(JSON.stringify(req.body, undefined, 2));
-      let testAccount = await nodeMailer.createTestAccount();
-      let transporter = nodeMailer.createTransport({
-          host: 'smtp.ethereal.email',
-          port: 587,
-          secure: false,
-          auth: {
-              user: testAccount.user,
-              pass: testAccount.pass
-          }
-      });
+      var transporter = nodeMailer.createTransport({
+         service: 'gmail',
+         auth: {
+                user: 'nodejs21@gmail.com',
+                pass: req.body.pass
+            }
+        });
       let mailOptions = {
           from: '"Safi Ullah" <ndoejs21@gmail.com>', // sender address
           to: "nodejs21@gmail.com", // list of receivers
