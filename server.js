@@ -12,7 +12,7 @@ var express = require('express'),
     app.get('/', function (req, res) {
       res.render('index');
     });
-    app.post('/send-email', function (req, res) {
+    app.post('/send-email', async function (req, res) {
       console.log(JSON.stringify(req.body, undefined, 2));
       let testAccount = await nodemailer.createTestAccount();
       let transporter = nodeMailer.createTransport({
