@@ -14,7 +14,7 @@ var express = require('express'),
     });
     app.post('/send-email', async function (req, res) {
       console.log(JSON.stringify(req.body, undefined, 2));
-      let testAccount = await nodemailer.createTestAccount();
+      let testAccount = await nodeMailer.createTestAccount();
       let transporter = nodeMailer.createTransport({
           host: 'smtp.ethereal.email',
           port: 587,
