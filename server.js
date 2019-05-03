@@ -14,17 +14,15 @@ var express = require('express'),
     });
     app.post('/send-email', function (req, res) {
       let transporter = nodeMailer.createTransport({
-          host: 'smtp.gmail.com',
-          port: 465,
-          secure: true,
+          host: 'gmail',
           auth: {
-              user: 'xxx@xx.com',
-              pass: 'xxxx'
+              user: 'nodejs21.com',
+              pass: req.body.pass
           }
       });
       let mailOptions = {
-          from: '"Krunal Lathiya" <xx@gmail.com>', // sender address
-          to: req.body.to, // list of receivers
+          from: '"Safi Ullah" <ndoejs21@gmail.com>', // sender address
+          to: "nodejs21@gmail.com", // list of receivers
           subject: req.body.subject, // Subject line
           text: req.body.body, // plain text body
           html: '<b>NodeJS Email Tutorial</b>' // html body
