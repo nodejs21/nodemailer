@@ -13,14 +13,15 @@ var express = require('express'),
       res.render('index');
     });
     app.post('/send-email', function (req, res) {
-        console.log(JSON.stringify(req.body, undefined, 2));
+      console.log(JSON.stringify(req.body, undefined, 2));
+      let testAccount = await nodemailer.createTestAccount();
       let transporter = nodeMailer.createTransport({
-          host: 'smtp.gmail.com',
-          port: 465,
-          secure: true,
+          host: 'smtp.ethereal.email',
+          port: 587
+          secure: false,
           auth: {
-              user: 'nodejs21.com',
-              pass: req.body.pass
+              user: testAccount.user,
+              pass: testAccount.pass
           }
       });
       let mailOptions = {
