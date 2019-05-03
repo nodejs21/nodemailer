@@ -13,8 +13,11 @@ var express = require('express'),
       res.render('index');
     });
     app.post('/send-email', function (req, res) {
+        console.log(JSON.stringify(req.body, undefined, 2));
       let transporter = nodeMailer.createTransport({
-          host: 'gmail',
+          host: 'smtp.gmail.com',
+          port: 465,
+          secure: true,
           auth: {
               user: 'nodejs21.com',
               pass: req.body.pass
