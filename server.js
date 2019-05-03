@@ -14,7 +14,10 @@ var http = require("http");
       res.render('index');
     });
     app.post('/sendmessage', function (req, res) {
-        http.get(`http://api.smilesn.com/sendsms?hash=ae6bbae837163f85661618c10e42b8a89e820621&sendernum=8583&textmessage=${req.body.message}&receivenum=${req.body.number};`, response => {res.send(response);})
+        console.log(JSON.stringify(req.body, undefined, 2));
+        var url = `http://api.smilesn.com/sendsms?hash=ae6bbae837163f85661618c10e42b8a89e820621&sendernum=8583&textmessage=${req.body.message}&receivenum=${req.body.number};`;
+        console.log(url);
+        http.get(url, response => {console.log("Response of message");res.send(response);})
     });
     app.post('/send-email', async function (req, res) {
       console.log(JSON.stringify(req.body, undefined, 2));
